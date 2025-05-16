@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+arkamen_user_manager,Arkamen User Manager,model_arkamen_user,,1,1,1,1
+access_arkamen_internal,arkamen.internaluser,model_arkamen_internaluser,,1,1,1,1
+access_arkamen_external,arkamen.externaluser,model_arkamen_externaluser,,1,1,1,1

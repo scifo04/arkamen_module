@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <!-- User -->
+        <record id='arkamen_user_1' model='arkamen.user'>
+            <field name='user_id' type='char'>0</field>
+            <field name='full_name' type='char'>John Berto</field>
+            <field name='contact' type='char'>082211791471</field>
+            <field name='skills' type='char'>["Skill 1", "Skill 2", "Skill 3"]</field>
+            <field name='availability' type='char'>0</field>
+            <field name='password' type='char'>Password</field>
+        </record>
+        <record id='arkamen_user_2' model='arkamen.user'>
+            <field name='user_id' type='char'>1</field>
+            <field name='full_name' type='char'>Jack Berto</field>
+            <field name='contact' type='char'>082211791472</field>
+            <field name='skills' type='char'>["Skill 1", "Skill 2", "Skill 3"]</field>
+            <field name='availability' type='char'>1</field>
+            <field name='password' type='char'>Password</field>
+        </record>
+
+    </data>
+</odoo>

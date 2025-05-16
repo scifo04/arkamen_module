@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="arkamen_externaluser_tree" model="ir.ui.view">
+    <field name="name">arkamen.externaluser.tree</field>
+    <field name="model">arkamen.externaluser</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="full_name"/>
+        <field name="contact"/>
+        <field name="skills"/>
+        <field name="availability"/>
+        <field name="tariff"/>
+        <field name="cv"/>
+        <field name="work_review"/>
+      </list>
+    </field>
+  </record>
+</odoo>

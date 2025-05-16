@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="arkamen_internaluser_form">
+    <field name="name">arkamen.internaluser.form</field>
+    <field name="model">arkamen.internaluser</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="full_name"/>
+            <field name="contact"/>
+            <field name="skills"/>
+            <field name="availability"/>
+            <field name="skill_level"/>
+            <field name="projects"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  
+</odoo>

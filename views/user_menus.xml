@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_list_arkamen_external" model="ir.actions.act_window">
+        <field name="name">Konfigurasi Pengguna Eksternal</field>
+        <field name="res_model">arkamen.externaluser</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_list_arkamen_internal" model="ir.actions.act_window">
+        <field name="name">Konfigurasi Pengguna Internal</field>
+        <field name="res_model">arkamen.internaluser</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="arkamen_root_menu" 
+        name="Arkamen User"
+        sequence="1"/>
+
+    <menuitem id="arkamen_user_menu_internal" 
+        name="Konfigurasi Internal"
+        parent="arkamen_root_menu"
+        action="action_list_arkamen_internal"
+        sequence="2"/>
+
+    <menuitem id="arkamen_user_menu_external" 
+        name="Konfigurasi Eksternal"
+        parent="arkamen_root_menu"
+        action="action_list_arkamen_external"
+        sequence="3"/>
+</odoo>
