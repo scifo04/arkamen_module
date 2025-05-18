@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="arkamen_allocation_form">
+    <field name="name">arkamen.allocate.form</field>
+    <field name="model">arkamen.allocate</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="project"/>
+            <field name="internal_user"/>
+            <field name="external_user"/>
+            <field name="start_date"/>
+            <field name="end_date"/>
+            <field name="allocation_percentage"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  
+</odoo>

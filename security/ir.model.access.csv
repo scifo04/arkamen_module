@@ -1,4 +1,16 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-arkamen_user_manager,Arkamen User Manager,model_arkamen_user,,1,1,1,1
-access_arkamen_internal,arkamen.internaluser,model_arkamen_internaluser,,1,1,1,1
-access_arkamen_external,arkamen.externaluser,model_arkamen_externaluser,,1,1,1,1
+access_arkamen_internal_internal_employee,arkamen.internaluser.internal.employee,model_arkamen_internaluser,arkamen_module.arkamen_internal_employee,1,1,1,1
+access_arkamen_internal_external_employee,arkamen.internaluser.external.employee,model_arkamen_internaluser,arkamen_module.arkamen_external_employee,0,0,0,0
+access_arkamen_internal_admin,arkamen.internaluser.admin,model_arkamen_internaluser,arkamen_module.arkamen_admin,1,1,1,1
+access_arkamen_external_internal_employee,arkamen.externaluser.internal.employee,model_arkamen_externaluser,arkamen_module.arkamen_internal_employee,0,0,0,0
+access_arkamen_external_external_employee,arkamen.externaluser.external.employee,model_arkamen_externaluser,arkamen_module.arkamen_external_employee,1,1,1,1
+access_arkamen_external_admin,arkamen.externaluser.admin,model_arkamen_externaluser,arkamen_module.arkamen_admin,1,1,1,1
+access_arkamen_project_internal_employee,arkamen.project.internal.employee,model_arkamen_project,arkamen_module.arkamen_internal_employee,1,0,0,0
+access_arkamen_project_external_employee,arkamen.project.external.employee,model_arkamen_project,arkamen_module.arkamen_external_employee,1,0,0,0
+access_arkamen_project_admin,arkamen.project.admin,model_arkamen_project,arkamen_module.arkamen_admin,1,1,1,1
+access_arkamen_vendor_internal_employee,arkamen.vendor.internal.employee,model_arkamen_vendor,arkamen_module.arkamen_internal_employee,1,0,0,0
+access_arkamen_vendor_external_employee,arkamen.vendor.external.employee,model_arkamen_vendor,arkamen_module.arkamen_external_employee,1,0,0,0
+access_arkamen_vendor_admin,arkamen.vendor.admin,model_arkamen_vendor,arkamen_module.arkamen_admin,1,1,1,1
+access_arkamen_allocate_internal_employee,arkamen.allocate.employee,model_arkamen_allocate,arkamen_module.arkamen_internal_employee,1,0,0,0
+access_arkamen_allocate_external_employee,arkamen.allocate.employee,model_arkamen_allocate,arkamen_module.arkamen_external_employee,1,0,0,0
+access_arkamen_allocate_admin,arkamen.allocate.admin,model_arkamen_allocate,arkamen_module.arkamen_admin,1,1,1,1

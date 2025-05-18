@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="arkamen_project_form">
+    <field name="name">arkamen.project.form</field>
+    <field name="model">arkamen.project</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="project_name"/>
+            <field name="skills"/>
+            <field name="duration"/>
+            <field name="budget"/>
+            <field name="description"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  
+</odoo>

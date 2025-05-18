@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="arkamen_vendor_form">
+    <field name="name">arkamen.vendor.form</field>
+    <field name="model">arkamen.vendor</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="vendor_name"/>
+            <field name="address"/>
+            <field name="contact"/>
+            <field name="project"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="arkamen_vendor_tree" model="ir.ui.view">
+    <field name="name">arkamen.vendor.tree</field>
+    <field name="model">arkamen.vendor</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="vendor_name"/>
+        <field name="address"/>
+        <field name="contact"/>
+        <field name="project"/>
+      </list>
+    </field>
+  </record>
+</odoo>

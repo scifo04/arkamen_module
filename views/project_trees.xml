@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="arkamen_project_tree" model="ir.ui.view">
+    <field name="name">arkamen.project.tree</field>
+    <field name="model">arkamen.project</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="project_name"/>
+        <field name="skills"/>
+        <field name="duration"/>
+        <field name="budget"/>
+        <field name="description"/>
+      </list>
+    </field>
+  </record>
+</odoo>

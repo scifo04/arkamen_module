@@ -1,9 +1,19 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 import json
 
 class User(models.Model):
     _name = 'arkamen.user'
     _description = 'Arkamen User Data'
+    @api.constrains('user_id')
+    def _check_unique_user(self):
+        for record in self:
+            existing = self.search([
+                ('user_id', '=', record.user_id.id),
+                ('id', '!=', record.id)
+            ])
+            if existing:
+                raise ValidationError("One Account only.")
 
     full_name = fields.Char(string="Nama", required=True)
     contact = fields.Char(string="Contact", required=True)
@@ -12,6 +22,7 @@ class User(models.Model):
         ('0', 'Available'), ('1', 'Not Available')
     ], string="Availability")
     display_skills = fields.Char(string="Skills (Short)", compute="_compute_display_skills")
+    user_id = fields.Many2one('res.users', string='User', required=True, default=lambda self: self.env.user)
 
     @api.depends('skills')
     def _compute_display_skills(self):
@@ -59,3 +70,33 @@ class ExternalUser(models.Model):
     tariff = fields.Integer(string="Tariff")
     cv = fields.Char(string="CV")
     work_review = fields.Char(string="Work Review")
+
+class Project(models.Model):
+    _name = 'arkamen.project'
+    _description = 'Arkamen Project Data'
+
+    project_name = fields.Char(string="Project Name")
+    skills = fields.Text(string="Skills for Project")
+    duration = fields.Integer(string="Project Duration (in Days)")
+    budget = fields.Integer(string="Project Budget")
+    description = fields.Char(string="Project Description")
+
+class Vendor(models.Model):
+    _name = 'arkamen.vendor'
+    _description = 'Arkamen Vendor Data'
+
+    vendor_name = fields.Char(string="Vendor Name")
+    address = fields.Char(string="Vendor Address")
+    contact = fields.Char(string="Vendor Contact")
+    project = fields.Many2one('arkamen.project',string="Project that the Vendor works in")
+
+class AllocateTo(models.Model):
+    _name = 'arkamen.allocate'
+    _description = 'Arkamen Allocation Data'
+
+    project = fields.Many2one('arkamen.project', string="Project Allocated")
+    internal_user = fields.Many2many('arkamen.internaluser',string="Allocate to Internal User")
+    external_user = fields.Many2many('arkamen.externaluser',string="Allocate to External User")
+    start_date = fields.Date(string="Start Date")
+    end_date = fields.Date(string="End Date")
+    allocation_percentage = fields.Integer(string="Allocation Percentage (%)")

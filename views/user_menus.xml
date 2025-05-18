@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="action_list_arkamen_external" model="ir.actions.act_window">
-        <field name="name">Konfigurasi Pengguna Eksternal</field>
+        <field name="name">Pengguna Eksternal</field>
         <field name="res_model">arkamen.externaluser</field>
         <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_list_arkamen_internal" model="ir.actions.act_window">
-        <field name="name">Konfigurasi Pengguna Internal</field>
+        <field name="name">Pengguna Internal</field>
         <field name="res_model">arkamen.internaluser</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_list_arkamen_project" model="ir.actions.act_window">
+        <field name="name">Proyek</field>
+        <field name="res_model">arkamen.project</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_list_arkamen_vendor" model="ir.actions.act_window">
+        <field name="name">Vendor</field>
+        <field name="res_model">arkamen.vendor</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_list_arkamen_allocation" model="ir.actions.act_window">
+        <field name="name">Alokasi Proyek</field>
+        <field name="res_model">arkamen.allocate</field>
         <field name="view_mode">list,form</field>
     </record>
 
@@ -16,15 +34,43 @@
         name="Arkamen User"
         sequence="1"/>
 
-    <menuitem id="arkamen_user_menu_internal" 
-        name="Konfigurasi Internal"
+    <menuitem id="arkamen_user_menu"
+        name="Konfigurasi Pengguna"
         parent="arkamen_root_menu"
-        action="action_list_arkamen_internal"
         sequence="2"/>
 
-    <menuitem id="arkamen_user_menu_external" 
-        name="Konfigurasi Eksternal"
+    <menuitem id="arkamen_project_menu"
+        name="Konfigurasi Proyek"
         parent="arkamen_root_menu"
-        action="action_list_arkamen_external"
         sequence="3"/>
+
+    <menuitem id="arkamen_user_menu_internal" 
+        name="Pengguna Internal"
+        parent="arkamen_user_menu"
+        action="action_list_arkamen_internal"
+        sequence="4"/>
+
+    <menuitem id="arkamen_user_menu_external" 
+        name="Pengguna Eksternal"
+        parent="arkamen_user_menu"
+        action="action_list_arkamen_external"
+        sequence="5"/>
+
+    <menuitem id="arkamen_project_menu_project" 
+        name="Proyek"
+        parent="arkamen_project_menu"
+        action="action_list_arkamen_project"
+        sequence="6"/>
+
+    <menuitem id="arkamen_project_menu_vendor" 
+        name="Vendor"
+        parent="arkamen_project_menu"
+        action="action_list_arkamen_vendor"
+        sequence="7"/>
+
+    <menuitem id="arkamen_project_menu_allocation" 
+        name="Allocation"
+        parent="arkamen_project_menu"
+        action="action_list_arkamen_allocation"
+        sequence="8"/>
 </odoo>

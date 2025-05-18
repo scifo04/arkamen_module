@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="arkamen_project_tree" model="ir.ui.view">
+    <field name="name">arkamen.allocate.tree</field>
+    <field name="model">arkamen.allocate</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="project"/>
+        <field name="start_date"/>
+        <field name="end_date"/>
+        <field name="allocation_percentage"/>
+      </list>
+    </field>
+  </record>
+</odoo>

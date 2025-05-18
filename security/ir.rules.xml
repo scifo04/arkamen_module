@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record id="arkamen_internaluser_rule_own" model="ir.rule">
+    <field name="name">User can only access their own Arkamen User record</field>
+    <field name="model_id" ref="model_arkamen_internaluser"/>
+    <field name="domain_force">[('user_id', '=', user.id)]</field>
+    <field name="groups" eval="[(4, ref('arkamen_module.arkamen_internal_employee'))]"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="True"/>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_unlink" eval="True"/>
+  </record>
+
+  <record id="arkamen_externaluser_rule_own" model="ir.rule">
+    <field name="name">User can only access their own Arkamen User record</field>
+    <field name="model_id" ref="model_arkamen_externaluser"/>
+    <field name="domain_force">[('user_id', '=', user.id)]</field>
+    <field name="groups" eval="[(4, ref('arkamen_module.arkamen_external_employee'))]"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="True"/>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_unlink" eval="True"/>
+  </record>
+
+  <record id="arkamen_allocation_rule_see_internal" model="ir.rule">
+    <field name="name">User can see their allocated Arkamen Project</field>
+    <field name="model_id" ref="model_arkamen_allocate"/>
+    <field name="domain_force">[('internal_user.user_id', 'in', [user.id])]</field>
+    <field name="groups" eval="[(4, ref('arkamen_module.arkamen_internal_employee'))]"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="False"/>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_unlink" eval="False"/>
+  </record>
+
+  <record id="arkamen_allocation_rule_see_external" model="ir.rule">
+    <field name="name">User can see their allocated Arkamen Project</field>
+    <field name="model_id" ref="model_arkamen_allocate"/>
+    <field name="domain_force">[('external_user.user_id', 'in', [user.id])]</field>
+    <field name="groups" eval="[(4, ref('arkamen_module.arkamen_external_employee'))]"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="False"/>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_unlink" eval="False"/>
+  </record>
+
+</odoo>

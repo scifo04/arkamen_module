@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record id="arkamen_internal_employee" model="res.groups">
+    <field name="name">Arkamen Internal Employee</field>
+  </record>
+
+  <record id="arkamen_external_employee" model="res.groups">
+    <field name="name">Arkamen External Employee</field>
+  </record>
+
+  <record id="arkamen_admin" model="res.groups">
+    <field name="name">Arkamen Admin</field>
+  </record>
+
+</odoo>
