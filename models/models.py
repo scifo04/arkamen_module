@@ -71,6 +71,12 @@ class ExternalUser(models.Model):
     cv = fields.Char(string="CV")
     work_review = fields.Char(string="Work Review")
 
+    @api.constrains('tariff')
+    def _check_tariff(self):
+        for record in self:
+            if record.tariff <= 0:
+                raise ValidationError("Tarif karyawan outsource harus berupa integer positif")
+
 class Project(models.Model):
     _name = 'arkamen.project'
     _description = 'Arkamen Project Data'
@@ -80,6 +86,18 @@ class Project(models.Model):
     duration = fields.Integer(string="Project Duration (in Days)")
     budget = fields.Integer(string="Project Budget")
     description = fields.Char(string="Project Description")
+
+    @api.constrains('duration')
+    def _check_duration(self):
+        for record in self:
+            if record.duration <= 0:
+                raise ValidationError("Durasi proyek harus berupa integer positif")
+
+    @api.constrains('budget')
+    def _check_budget(self):
+        for record in self:
+            if record.budget <= 0:
+                raise ValidationError("Biaya proyek harus berupa integer positif")
 
 class Vendor(models.Model):
     _name = 'arkamen.vendor'
@@ -100,3 +118,18 @@ class AllocateTo(models.Model):
     start_date = fields.Date(string="Start Date")
     end_date = fields.Date(string="End Date")
     allocation_percentage = fields.Integer(string="Allocation Percentage (%)")
+
+    @api.constrains('allocation_percentage')
+    def _check_allocation_percentage(self):
+        for record in self:
+            if record.allocation_percentage <= 0:
+                raise ValidationError("Persentase alokasi karyawan harus berupa integer positif")
+            if record.allocation_percentage > 100:
+                raise ValidationError("Persentase alokasi karyawan tidak boleh lebih dari 100%.")
+
+    @api.constrains('start_date', 'end_date')
+    def _check_dates(self):
+        for record in self:
+            if record.start_date and record.end_date:
+                if record.start_date > record.end_date:
+                    raise ValidationError("Tanggal mulai harus lebih awal daripada tanggal selesai.")

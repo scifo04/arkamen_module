@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="action_list_arkamen_external" model="ir.actions.act_window">
-        <field name="name">Pengguna Eksternal</field>
+        <field name="name">Manajemen Karyawan Outsource</field>
         <field name="res_model">arkamen.externaluser</field>
         <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_list_arkamen_internal" model="ir.actions.act_window">
-        <field name="name">Pengguna Internal</field>
+        <field name="name">Manajemen Karyawan Internal</field>
         <field name="res_model">arkamen.internaluser</field>
         <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_list_arkamen_project" model="ir.actions.act_window">
-        <field name="name">Proyek</field>
+        <field name="name">Manajemen Proyek</field>
         <field name="res_model">arkamen.project</field>
         <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_list_arkamen_vendor" model="ir.actions.act_window">
-        <field name="name">Vendor</field>
+        <field name="name">Manajemen Vendor</field>
         <field name="res_model">arkamen.vendor</field>
         <field name="view_mode">list,form</field>
     </record>
 
     <record id="action_list_arkamen_allocation" model="ir.actions.act_window">
-        <field name="name">Alokasi Proyek</field>
+        <field name="name">Manajemen Alokasi Proyek</field>
         <field name="res_model">arkamen.allocate</field>
         <field name="view_mode">list,form</field>
     </record>
@@ -35,7 +35,7 @@
         sequence="1"/>
 
     <menuitem id="arkamen_user_menu"
-        name="Konfigurasi Pengguna"
+        name="Konfigurasi Karyawan"
         parent="arkamen_root_menu"
         sequence="2"/>
 
@@ -45,31 +45,31 @@
         sequence="3"/>
 
     <menuitem id="arkamen_user_menu_internal" 
-        name="Pengguna Internal"
+        name="Manajemen Karyawan Internal"
         parent="arkamen_user_menu"
         action="action_list_arkamen_internal"
         sequence="4"/>
 
     <menuitem id="arkamen_user_menu_external" 
-        name="Pengguna Eksternal"
+        name="Manajemen Karyawan Outsource"
         parent="arkamen_user_menu"
         action="action_list_arkamen_external"
         sequence="5"/>
 
     <menuitem id="arkamen_project_menu_project" 
-        name="Proyek"
+        name="Manajemen Proyek"
         parent="arkamen_project_menu"
         action="action_list_arkamen_project"
         sequence="6"/>
 
     <menuitem id="arkamen_project_menu_vendor" 
-        name="Vendor"
+        name="Manajemen Vendor"
         parent="arkamen_project_menu"
         action="action_list_arkamen_vendor"
         sequence="7"/>
 
     <menuitem id="arkamen_project_menu_allocation" 
-        name="Allocation"
+        name="Manajemen Alokasi Proyek"
         parent="arkamen_project_menu"
         action="action_list_arkamen_allocation"
         sequence="8"/>
