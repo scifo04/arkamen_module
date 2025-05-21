@@ -102,6 +102,7 @@ class ExternalUser(models.Model):
 class Project(models.Model):
     _name = 'arkamen.project'
     _description = 'Arkamen Project Data'
+    _rec_name = 'project_name'
 
     project_name = fields.Char(string="Project Name")
     skills = fields.Text(string="Skills for Project")
