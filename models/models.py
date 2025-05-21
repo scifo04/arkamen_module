@@ -156,3 +156,41 @@ class AllocateTo(models.Model):
             if record.start_date and record.end_date:
                 if record.start_date > record.end_date:
                     raise ValidationError("Tanggal mulai harus lebih awal daripada tanggal selesai.")
+                
+    @api.constrains('project', 'internal_user', 'external_user', 'start_date', 'end_date')
+    def _check_allocation_overlap(self):
+        for record in self:
+            if not (record.start_date and record.end_date):
+                continue
+
+            if record.internal_user:
+                for user in record.internal_user:
+                    overlapping_allocations = self.search([
+                        ('id', '!=', record.id), 
+                        ('project', '=', record.project.id),  
+                        ('internal_user', 'in', [user.id]),  
+                        '|',
+                        '&', ('start_date', '<=', record.start_date), ('end_date', '>=', record.start_date),
+                        '|',
+                        '&', ('start_date', '<=', record.end_date), ('end_date', '>=', record.end_date), 
+                        '&', ('start_date', '>=', record.start_date), ('end_date', '<=', record.end_date), 
+                    ])
+                    
+                    if overlapping_allocations:
+                        raise ValidationError(f"Karyawan internal '{user.full_name}' sudah dialokasikan ke proyek '{record.project.project_name}' dalam rentang tanggal yang bertabrakan.")
+            
+            if record.external_user:
+                for user in record.external_user:
+                    overlapping_allocations = self.search([
+                        ('id', '!=', record.id),
+                        ('project', '=', record.project.id),  
+                        ('external_user', 'in', [user.id]),  
+                        '|',
+                        '&', ('start_date', '<=', record.start_date), ('end_date', '>=', record.start_date),  
+                        '|',
+                        '&', ('start_date', '<=', record.end_date), ('end_date', '>=', record.end_date),  
+                        '&', ('start_date', '>=', record.start_date), ('end_date', '<=', record.end_date), 
+                    ])
+                    
+                    if overlapping_allocations:
+                        raise ValidationError(f"Karyawan eksternal '{user.full_name}' sudah dialokasikan ke proyek '{record.project.project_name}' dalam rentang tanggal yang bertabrakan.")

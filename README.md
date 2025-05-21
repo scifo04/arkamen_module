@@ -1,7 +1,7 @@
 ### Arkamen Module
 To use Arkamen Module, follow these steps : 
 1. Open folder that you use as the directory to store your additional Odoo modules
-2. Clone this repository (`https://github.com/scifo04/arkamen_module.git`)
+2. Clone this repository (`https://github.com/scifo04/arkamen_module.git`) on the directory
 3. Open Odoo on your browser
 4. Open Apps on the top-left button on your Odoo App
 5. Click `Update App List` to add the Arkamen module to odoo. Restart the odoo from service if needed.
