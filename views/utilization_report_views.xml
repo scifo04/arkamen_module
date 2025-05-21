@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_arkamen_utilization_report_form" model="ir.ui.view">
-        <field name="name">arkamen.utilization.report.form</field>
-        <field name="model">arkamen.utilization.report</field>
+    <record id="view_arkamen_utilization_report_form_internal" model="ir.ui.view">
+        <field name="name">arkamen.utilization.report.form.internal</field>
+        <field name="model">arkamen.utilization.report.internal</field>
+        <field name="arch" type="xml">
+            <form string="Laporan Utilisasi SDM">
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+                <footer>
+                    <button name="action_generate_report" string="Tampilkan Laporan" type="object" class="btn-primary"/>
+                    <button string="Batal" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_arkamen_utilization_report_form_external" model="ir.ui.view">
+        <field name="name">arkamen.utilization.report.form.external</field>
+        <field name="model">arkamen.utilization.report.external</field>
         <field name="arch" type="xml">
             <form string="Laporan Utilisasi SDM">
                 <group>
@@ -23,7 +40,6 @@
         <field name="arch" type="xml">
             <list>
                 <field name="employee_name"/>
-                <field name="skills"/>
                 <field name="skill_level"/>
                 <field name="project"/>
                 <field name="vendor"/>
@@ -40,7 +56,6 @@
         <field name="arch" type="xml">
             <list>
                 <field name="employee_name"/>
-                <field name="skills"/>
                 <field name="tariff"/>
                 <field name="project"/>
                 <field name="vendor"/>
@@ -51,12 +66,20 @@
         </field>
     </record>
 
-    <record id="action_arkamen_utilization_report" model="ir.actions.act_window">
+    <record id="action_arkamen_utilization_report_form_internal" model="ir.actions.act_window">
         <field name="name">Laporan Utilisasi SDM</field>
-        <field name="res_model">arkamen.utilization.report</field>
+        <field name="res_model">arkamen.utilization.report.internal</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="view_id" ref="view_arkamen_utilization_report_form"/>
+        <field name="view_id" ref="view_arkamen_utilization_report_form_internal"/>
+    </record>
+
+    <record id="action_arkamen_utilization_report_form_external" model="ir.actions.act_window">
+        <field name="name">Laporan Utilisasi SDM</field>
+        <field name="res_model">arkamen.utilization.report.external</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_arkamen_utilization_report_form_external"/>
     </record>
 
     <record id="action_arkamen_utilization_report_internal" model="ir.actions.act_window">
@@ -83,7 +106,13 @@
     <menuitem id="arkamen_utilization_report_menu_internal"
         name="Utilisasi SDM Internal"
         parent="arkamen_utilization_report_menu"
-        action="action_arkamen_utilization_report"
+        action="action_arkamen_utilization_report_form_internal"
         sequence="10"/>
+
+    <menuitem id="arkamen_utilization_report_menu_external"
+        name="Utilisasi SDM Eksternal"
+        parent="arkamen_utilization_report_menu"
+        action="action_arkamen_utilization_report_form_external"
+        sequence="11"/>
 
 </odoo>
