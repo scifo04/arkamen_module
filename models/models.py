@@ -35,7 +35,7 @@ class User(models.Model):
             return json.loads(self.skills or '[]')
         except json.JSONDecodeError:
             return []
-        
+    
     def set_skills_list(self, str_list):
         self.skills = json.dumps(str_list)
 
@@ -45,10 +45,10 @@ class InternalUser(models.Model):
     _description = 'Arkamen Internal User Data'
 
     skill_level = fields.Selection(selection=[
-        ('0', 'Beginner'), 
-        ('1', 'Intermediate'), 
-        ('2', 'Proficient'), 
-        ('3', 'Advanced'), 
+        ('0', 'Beginner'),
+        ('1', 'Intermediate'),
+        ('2', 'Proficient'),
+        ('3', 'Advanced'),
         ('4', 'Expert'),
     ])
     projects = fields.Text(string="Projects")
@@ -58,7 +58,7 @@ class InternalUser(models.Model):
             return json.loads(self.projects or '[]')
         except json.JSONDecodeError:
             return []
-        
+    
     def set_projects_list(self, str_list):
         self.projects = json.dumps(str_list)
 
@@ -68,8 +68,30 @@ class ExternalUser(models.Model):
     _description = 'Arkamen External User Data'
 
     tariff = fields.Integer(string="Tariff")
-    cv = fields.Char(string="CV")
-    work_review = fields.Char(string="Work Review")
+
+    cv = fields.Binary(string="CV", attachment=True)
+    cv_filename = fields.Char(string="CV Filename")
+    
+    work_review_ids = fields.Many2many(
+        'ir.attachment',
+        'arkamen_externaluser_attachment_rel',
+        'externaluser_id',
+        'attachment_id',
+        string="Work Reviews"
+    )
+
+    cv_status = fields.Char(string="CV", compute="_compute_cv_status", store=True)
+    work_review_status = fields.Char(string="Work Reviews", compute="_compute_work_review_status", store=True)
+
+    @api.depends('cv')
+    def _compute_cv_status(self):
+        for rec in self:
+            rec.cv_status = "Available" if rec.cv else "Not Available"
+
+    @api.depends('work_review_ids')
+    def _compute_work_review_status(self):
+        for rec in self:
+            rec.work_review_status = "Available" if rec.work_review_ids else "Not Available"
 
     @api.constrains('tariff')
     def _check_tariff(self):

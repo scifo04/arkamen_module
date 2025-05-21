@@ -14,12 +14,13 @@
             <field name="skills"/>
             <field name="availability"/>
             <field name="tariff"/>
-            <field name="cv"/>
-            <field name="work_review"/>
+            <field name="cv" filename="cv_filename" widget="binary"/>
+            <field name="cv_filename" invisible="1"/>
+            <field name="work_review_ids" widget="many2many_binary"/>
           </group>
         </sheet>
       </form>
     </field>
   </record>
-  
+
 </odoo>

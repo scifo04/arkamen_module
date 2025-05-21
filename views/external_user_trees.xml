@@ -10,8 +10,8 @@
         <field name="skills"/>
         <field name="availability"/>
         <field name="tariff"/>
-        <field name="cv"/>
-        <field name="work_review"/>
+        <field name="cv_status" />
+        <field name="work_review_status" />
       </list>
     </field>
   </record>
