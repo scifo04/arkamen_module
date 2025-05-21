@@ -21,6 +21,7 @@
         'views/vendor_trees.xml',
         'views/external_user_trees.xml',
         'views/internal_user_trees.xml',
+        'views/utilization_report_views.xml',
         'views/user_menus.xml'
     ],
     'demo': [
