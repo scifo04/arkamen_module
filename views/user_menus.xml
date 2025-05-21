@@ -30,6 +30,38 @@
         <field name="view_mode">list,form</field>
     </record>
 
+     <record id="action_arkamen_utilization_report_form_internal" model="ir.actions.act_window">
+        <field name="name">Laporan Utilisasi SDM Internal</field>
+        <field name="res_model">arkamen.utilization.report.internal</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_arkamen_utilization_report_form_internal"/>
+    </record>
+
+    <record id="action_arkamen_utilization_report_form_external" model="ir.actions.act_window">
+        <field name="name">Laporan Utilisasi SDM Eksternal</field>
+        <field name="res_model">arkamen.utilization.report.external</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_arkamen_utilization_report_form_external"/>
+    </record>
+
+    <record id="action_arkamen_utilization_report_internal" model="ir.actions.act_window">
+        <field name="name">Data Utilisasi Karyawan Internal</field>
+        <field name="res_model">arkamen.utilization.report.internal.line</field>
+        <field name="view_mode">list</field>
+        <field name="target">current</field>
+        <field name="view_id" ref="view_arkamen_utilization_report_internal_list"/>
+    </record>
+
+    <record id="action_arkamen_utilization_report_external" model="ir.actions.act_window">
+        <field name="name">Data Utilisasi Karyawan Eksternal</field>
+        <field name="res_model">arkamen.utilization.report.external.line</field>
+        <field name="view_mode">list</field>
+        <field name="target">current</field>
+        <field name="view_id" ref="view_arkamen_utilization_report_external_list"/>
+    </record>
+
     <menuitem id="arkamen_root_menu" 
         name="Arkamen User"
         sequence="1"/>
@@ -73,4 +105,21 @@
         parent="arkamen_project_menu"
         action="action_list_arkamen_allocation"
         sequence="8"/>
+
+    <menuitem id="arkamen_utilization_report_menu"
+        name="Laporan Utilisasi SDM"
+        parent="arkamen_root_menu"
+        sequence="9"/>
+
+    <menuitem id="arkamen_utilization_report_menu_internal"
+        name="Utilisasi SDM Internal"
+        parent="arkamen_utilization_report_menu"
+        action="action_arkamen_utilization_report_form_internal"
+        sequence="10"/>
+
+    <menuitem id="arkamen_utilization_report_menu_external"
+        name="Utilisasi SDM Eksternal"
+        parent="arkamen_utilization_report_menu"
+        action="action_arkamen_utilization_report_form_external"
+        sequence="11"/>
 </odoo>
